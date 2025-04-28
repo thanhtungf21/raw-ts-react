@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
+import Footer from "@/components/footer/Footer";
 
 const DefaultLayout: React.FC = () => {
   return (
@@ -9,13 +10,13 @@ const DefaultLayout: React.FC = () => {
           <div className="logo">My App</div>
           <ul className="menu">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>
@@ -23,9 +24,7 @@ const DefaultLayout: React.FC = () => {
       <main className="main-content">
         <Outlet />
       </main>
-      <footer className="footer">
-        <p>&copy; 2025 My App. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
