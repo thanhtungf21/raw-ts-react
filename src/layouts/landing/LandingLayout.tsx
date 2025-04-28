@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
-import styles from "./index.module.scss";
+import styles from "../index.module.scss";
 import clsx from "clsx";
 
 const LandingLayout: React.FC = () => {

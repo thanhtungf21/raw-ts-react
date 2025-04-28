@@ -1,24 +1,32 @@
+// --- File: tsconfig.node.json ---
 {
   "compilerOptions": {
+    // Build info file helps speed up subsequent checks
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2022",
-    "lib": ["ES2023"],
-    "module": "ESNext",
-    "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    // Node-specific settings
+    "target": "ES2022", // Target a recent Node-supporting ES version
+    "lib": ["ES2023"], // Include appropriate ES libraries for Node
+    "module": "ESNext", // Use modern ES modules
+    "moduleResolution": "bundler", // Or "NodeNext" - aligns with modern Node/bundler resolution
+    "moduleDetection": "force", // Helps ensure files are treated as modules
+
+    // Essential for project references
+    "composite": true, // REQUIRED because it's referenced by tsconfig.json
+    // "noEmit": false, // Cannot use noEmit:true with composite:true (default is false, so okay)
+
+    // Other settings
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true, // Often helpful in Node environment
+    "isolatedModules": true, // Good practice, often needed by tools
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
+    // "noUncheckedSideEffectImports": true // Keep if desired
   },
+  // Specify ONLY the Node-related files this config applies to
   "include": ["vite.config.ts"]
 }

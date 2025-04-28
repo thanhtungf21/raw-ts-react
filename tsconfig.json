@@ -1,11 +1,40 @@
+// --- File: tsconfig.json ---
 {
   "compilerOptions": {
-    "types": ["node"]
-    // other options...
+    // Build info file
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Can reuse app buildinfo name
+
+    /* === Base App/Browser Options (from former tsconfig.app.json) === */
+    "target": "ES2020",
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force", // Keep if needed, often implied by isolatedModules/bundler
+    "noEmit": true, // Correct for app code when bundler handles output
+
+    /* === Path Aliases (Keep from original tsconfig.json) === */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* === Strictness & Code Quality (Keep consistent) === */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    // "noUncheckedSideEffectImports": true, // Keep if desired
+    // "forceConsistentCasingInFileNames": true, // Optional
+    "skipLibCheck": true
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  /* === Project Files (Specify app source code) === */
+  "include": ["src"], // This config now directly includes the app source
+
+  /* === Project References (Reference the Node config) === */
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
