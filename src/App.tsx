@@ -6,6 +6,7 @@ import { useRoutes } from "react-router";
 import { BrowserRouter } from "react-router";
 import { routes } from "./routes/routes";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 
 const AppRoutes: React.FC = () => {
   const element = useRoutes(routes);
@@ -16,6 +17,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppRoutes />
+      <ToastContainer />
     </BrowserRouter>
   );
 };
